@@ -33,6 +33,11 @@ module Ducksboard
         :body => @data.to_json)
     end
 
+    def clear
+      self.class.delete('/' + id.to_s,
+        :basic_auth => auth)
+    end
+
     def save
       if valid?
         update.code.to_i == 200
